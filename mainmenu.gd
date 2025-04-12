@@ -13,3 +13,11 @@ func _process(delta):
 
 func _on_start_button_pressed():
 	get_tree().change_scene_to_file("res://node_2d.tscn")
+
+
+func _on_options_menu_pressed():
+	get_tree().change_scene_to_file("res://assets/buttons/themes/options.tscn")
+
+
+func _on_credits_menu_pressed():
+	pass # Replace with function body.

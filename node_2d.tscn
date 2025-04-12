@@ -104,6 +104,12 @@ sources/1 = SubResource("TileSetAtlasSource_yi228")
 
 [node name="Node2D" type="Node2D"]
 
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer"]
+offset_right = 40.0
+offset_bottom = 40.0
+
 [node name="TileMap" type="TileMap" parent="."]
 tile_set = SubResource("TileSet_4n1hq")
 format = 2
@@ -133,4 +139,3 @@ layer_3/tile_data = PackedInt32Array(1114112, 1048576, 10, 1179648, 1048576, 11,
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(576, 321)
-position_smoothing_enabled = true
