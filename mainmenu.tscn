@@ -1,11 +1,13 @@
-[gd_scene load_steps=12 format=3 uid="uid://b317kpxwh1vw7"]
+[gd_scene load_steps=14 format=3 uid="uid://b317kpxwh1vw7"]
 
 [ext_resource type="Script" path="res://mainmenu.gd" id="1_yliev"]
 [ext_resource type="Texture2D" uid="uid://bg31ax60d71a2" path="res://assets/Example Tileset.png" id="2_7b2j8"]
 [ext_resource type="Texture2D" uid="uid://dse3tf8a73sj4" path="res://assets/color5.png" id="2_7f517"]
-[ext_resource type="Theme" uid="uid://fe8vh3xqdpsa" path="res://assets/buttons/themes/button_theme.tres" id="4_ccy12"]
+[ext_resource type="Theme" uid="uid://cfyox8v6c2w3t" path="res://assets/buttons/themes/menubox.tres" id="4_2xu0g"]
+[ext_resource type="Theme" uid="uid://fe8vh3xqdpsa" path="res://assets/buttons/themes/startgame.tres" id="4_b2gd3"]
 [ext_resource type="Theme" uid="uid://d4cb7trjeibrj" path="res://assets/buttons/themes/option_theme.tres" id="5_ejajl"]
 [ext_resource type="Theme" uid="uid://cynejfmb2hsnj" path="res://assets/buttons/themes/credit_theme.tres" id="6_x57ka"]
+[ext_resource type="Theme" uid="uid://dxtrbnc76ir8k" path="res://assets/buttons/themes/quit_theme.tres" id="7_fixuq"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_uawfw"]
 texture = ExtResource("2_7f517")
@@ -176,6 +178,21 @@ text = "     Credit page     "
 icon_alignment = 1
 expand_icon = true
 
+[node name="Box Panel" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -156.0
+offset_top = -52.0
+offset_right = 158.0
+offset_bottom = 180.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("4_2xu0g")
+
 [node name="StartButton" type="Button" parent="."]
 layout_mode = 1
 anchors_preset = 8
@@ -190,8 +207,7 @@ offset_bottom = 25.5
 grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 4
-theme = ExtResource("4_ccy12")
-theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme = ExtResource("4_b2gd3")
 theme_override_font_sizes/font_size = 28
 icon_alignment = 1
 expand_icon = true
@@ -236,10 +252,29 @@ theme_override_font_sizes/font_size = 28
 icon_alignment = 1
 expand_icon = true
 
+[node name="QuitButton" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -116.0
+offset_top = -62.0
+offset_right = -15.0
+offset_bottom = -13.0
+grow_horizontal = 0
+grow_vertical = 0
+size_flags_horizontal = 4
+theme = ExtResource("7_fixuq")
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 28
+icon_alignment = 1
+expand_icon = true
+
 [connection signal="pressed" from="VBoxContainer/StartButton2" to="." method="_on_start_button_pressed"]
 [connection signal="pressed" from="VBoxContainer/StartButton3" to="." method="_on_start_button_pressed"]
 [connection signal="pressed" from="StartButton" to="." method="_on_start_button_pressed"]
-[connection signal="pressed" from="OptionsMenu" to="." method="_on_start_button_pressed"]
 [connection signal="pressed" from="OptionsMenu" to="." method="_on_options_menu_pressed"]
-[connection signal="pressed" from="CreditsMenu" to="." method="_on_start_button_pressed"]
 [connection signal="pressed" from="CreditsMenu" to="." method="_on_credits_menu_pressed"]
+[connection signal="pressed" from="QuitButton" to="." method="_on_quit_button_pressed"]
