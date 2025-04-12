@@ -1,0 +1,46 @@
+[gd_scene load_steps=4 format=3 uid="uid://dfwftdkk3lipp"]
+
+[ext_resource type="Script" path="res://disasters.gd" id="1_bm8e2"]
+[ext_resource type="Texture2D" uid="uid://b0qxjkeo5kgse" path="res://assets/buttons/rain.png" id="2_od7sl"]
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_v03ps"]
+emission_shape = 3
+emission_box_extents = Vector3(100, 1, 1)
+particle_flag_disable_z = true
+gravity = Vector3(0, 98, 0)
+orbit_velocity_min = 0.0
+orbit_velocity_max = 0.0
+color = Color(0.278431, 0.85098, 0.176471, 1)
+
+[node name="disasters" type="StaticBody2D"]
+script = ExtResource("1_bm8e2")
+
+[node name="acid_rain_tech" type="Node2D" parent="."]
+
+[node name="acid_tint_tech" type="Node2D" parent="acid_rain_tech"]
+position = Vector2(578, 0)
+scale = Vector2(5.89256, 7.60056)
+
+[node name="weather_tint" type="CanvasModulate" parent="acid_rain_tech/acid_tint_tech"]
+position = Vector2(-98.0898, 0)
+scale = Vector2(0.169706, 0.131569)
+color = Color(0.392157, 0.411765, 0, 1)
+
+[node name="acid_rain_part" type="Node2D" parent="acid_rain_tech"]
+position = Vector2(578, 0)
+scale = Vector2(5.89256, 7.60056)
+
+[node name="acid_rain" type="GPUParticles2D" parent="acid_rain_tech/acid_rain_part"]
+amount = 1000
+process_material = SubResource("ParticleProcessMaterial_v03ps")
+texture = ExtResource("2_od7sl")
+lifetime = 4.0
+speed_scale = 1.5
+randomness = 1.0
+
+[node name="weather_timer" type="Timer" parent="acid_rain_tech"]
+wait_time = 15.0
+one_shot = true
+autostart = true
+
+[connection signal="timeout" from="acid_rain_tech/weather_timer" to="." method="_on_weather_timer_timeout"]
