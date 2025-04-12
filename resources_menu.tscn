@@ -1,0 +1,59 @@
+[gd_scene load_steps=3 format=3 uid="uid://fijcaeamww20"]
+
+[ext_resource type="Script" uid="uid://c7s8b1k5tpqy3" path="res://test_income_generator.gd" id="1_5c3ox"]
+[ext_resource type="PackedScene" uid="uid://dx5kb7x0muvgg" path="res://test_building.tscn" id="2_meicg"]
+
+[node name="resources_menu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -1.0
+offset_top = -3.0
+offset_right = -1.0
+offset_bottom = -3.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_5c3ox")
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = -0.0252964
+anchor_top = 0.048913
+anchor_right = -0.0252964
+anchor_bottom = 0.051087
+offset_left = 836.32
+offset_top = 36.0
+offset_right = 1065.32
+offset_bottom = 678.0
+metadata/_edit_use_anchors_ = true
+
+[node name="money_label" type="Label" parent="Panel"]
+layout_mode = 0
+offset_left = 14.0
+offset_top = 9.0
+offset_right = 210.0
+offset_bottom = 61.0
+text = "$$$: "
+vertical_alignment = 1
+
+[node name="test_income_generator" type="Button" parent="Panel"]
+layout_mode = 0
+offset_left = 40.0
+offset_top = 564.0
+offset_right = 190.0
+offset_bottom = 617.0
+text = "Generate $$$"
+
+[node name="test_building" parent="." instance=ExtResource("2_meicg")]
+layout_mode = 0
+offset_left = 839.0
+offset_top = 136.0
+offset_right = 1014.0
+offset_bottom = 176.0
+
+[node name="money_timer" type="Timer" parent="."]
+
+[connection signal="pressed" from="Panel/test_income_generator" to="." method="_on_test_button_pressed_grant_money"]
+[connection signal="timeout" from="money_timer" to="." method="_on_money_timer_timeout"]

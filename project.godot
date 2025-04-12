@@ -12,5 +12,5 @@ config_version=5
 
 config/name="Game Development Club Game Jam 2025"
 run/main_scene="res://mainmenu.tscn"
-config/features=PackedStringArray("4.1", "Forward Plus")
+config/features=PackedStringArray("4.4", "Forward Plus")
 config/icon="res://icon.svg"
