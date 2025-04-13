@@ -103,3 +103,13 @@ func show_side(message):
 	var tween : Tween = side_label.create_tween()
 	tween.tween_interval(2.5)
 	tween.tween_callback(side_label.queue_free)
+
+func damage():
+	$destroy_timer.wait_time = randi_range(5, 20)
+	$destroy_timer.start()
+	if (disaster_state == "meteor"):
+		print("Destroy!")
+		
+
+func _on_destroy_timer_timeout() -> void:
+	pass # Replace with function body.
