@@ -7,7 +7,9 @@ class_name main_panel extends Control
 func _ready() -> void:
 	money_label.text = "$$$: " + str(money_value)
 	print("Main menu is working!")
-	
+
+func _process(delta) -> void:
+	pass
 
 
 func _on_test_button_pressed_grant_money() -> void:

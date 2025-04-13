@@ -19,10 +19,10 @@ script = ExtResource("1_5c3ox")
 [node name="Panel" type="Panel" parent="."]
 layout_mode = 1
 anchors_preset = -1
-anchor_left = -0.0252964
-anchor_top = 0.048913
-anchor_right = -0.0252964
-anchor_bottom = 0.051087
+anchor_left = 0.0735069
+anchor_top = -0.0509259
+anchor_right = 0.073507
+anchor_bottom = -0.0487519
 offset_left = 836.32
 offset_top = 36.0
 offset_right = 1065.32
@@ -46,12 +46,12 @@ offset_right = 190.0
 offset_bottom = 617.0
 text = "Generate $$$"
 
-[node name="test_building" parent="." instance=ExtResource("2_meicg")]
+[node name="test_building" parent="Panel" instance=ExtResource("2_meicg")]
 layout_mode = 0
-offset_left = 839.0
-offset_top = 136.0
-offset_right = 1014.0
-offset_bottom = 176.0
+offset_left = 31.8215
+offset_top = 68.3044
+offset_right = 206.821
+offset_bottom = 108.304
 
 [node name="money_timer" type="Timer" parent="."]
 

@@ -1,4 +1,5 @@
 extends Panel
+class_name buildingcomponent
 
 @export var MIN_COST := 10
 @export var MIN_BUILDINGS := 0
@@ -20,12 +21,14 @@ func _ready() -> void:
 	building_cost_text.text = "$" + str(building_cost)
 	building_amount_text.text = str(building_amount)
 
+func _process(delta) -> void:
+	generate_money()
+
+func generate_money():
+	var generated_money = building_generation * building_amount
+	print("Generation is working")
 
 
-#func generate_money():
-	#$resources_menu.money_value += building_money_generation * building_amount_value
-	#print("Generation is working")
-	#
 #
 #func _on_building_buy_button_pressed() -> void:
 	#print("Processing building")
@@ -36,3 +39,7 @@ func _ready() -> void:
 		#building_amount_value.text = str(building_amount_value)
 	#else:
 		#print("Building not bought")
+
+
+func _on_generation_timer_timeout() -> void:
+	pass
