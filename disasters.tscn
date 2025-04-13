@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://dfwftdkk3lipp"]
+[gd_scene load_steps=17 format=3 uid="uid://dfwftdkk3lipp"]
 
 [ext_resource type="Script" path="res://disasters.gd" id="1_bm8e2"]
 [ext_resource type="Texture2D" uid="uid://b0qxjkeo5kgse" path="res://assets/rain.png" id="2_q3n15"]
@@ -99,6 +99,12 @@ scale_min = 4.0
 scale_max = 4.0
 color = Color(0.866667, 0.74902, 0.772549, 0.352941)
 
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_yodv6"]
+particle_flag_disable_z = true
+gravity = Vector3(0, 98, 0)
+orbit_velocity_min = 0.0
+orbit_velocity_max = 0.0
+
 [node name="disasters" type="StaticBody2D"]
 script = ExtResource("1_bm8e2")
 
@@ -112,6 +118,7 @@ color = Color(0.380392, 0.647059, 0.0352941, 1)
 color = Color(0.231373, 0.231373, 0.231373, 1)
 
 [node name="heatwave_tint" type="CanvasModulate" parent="."]
+color = Color(0.992157, 1, 0, 1)
 
 [node name="weather_timer" type="Timer" parent="."]
 wait_time = 15.0
@@ -209,6 +216,11 @@ texture = ExtResource("2_q3n15")
 lifetime = 3.8
 speed_scale = 3.58
 randomness = 1.0
+
+[node name="fire_tech" type="Node2D" parent="disaster_techs"]
+
+[node name="fire" type="GPUParticles2D" parent="disaster_techs/fire_tech"]
+process_material = SubResource("ParticleProcessMaterial_yodv6")
 
 [node name="blizzard_tint" type="CanvasModulate" parent="."]
 visible = false
