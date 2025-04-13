@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://bhadttx6f65ue"]
 
-[ext_resource type="Script" uid="uid://c7s8b1k5tpqy3" path="res://test_income_generator.gd" id="1_5c3ox"]
-[ext_resource type="PackedScene" uid="uid://dx5kb7x0muvgg" path="res://test_building.tscn" id="2_meicg"]
+[ext_resource type="Script" uid="uid://bt7may6k55gyh" path="res://test_income_generator.gd" id="1_5c3ox"]
+[ext_resource type="PackedScene" uid="uid://bnrnleeopslvr" path="res://building_component.tscn" id="2_meicg"]
 
 [node name="resources_menu" type="Control"]
 layout_mode = 3
@@ -46,12 +46,12 @@ offset_right = 190.0
 offset_bottom = 617.0
 text = "Generate $$$"
 
-[node name="test_building" parent="Panel" instance=ExtResource("2_meicg")]
+[node name="building_component" parent="Panel" instance=ExtResource("2_meicg")]
 layout_mode = 0
-offset_left = 31.8215
-offset_top = 68.3044
-offset_right = 206.821
-offset_bottom = 108.304
+offset_left = 32.0001
+offset_top = 53.0
+offset_right = 182.0
+offset_bottom = 93.0
 
 [node name="money_timer" type="Timer" parent="."]
 
