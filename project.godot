@@ -14,6 +14,10 @@ config/name="Game Development Club Game Jam 2025"
 run/main_scene="res://mainmenu.tscn"
 config/features=PackedStringArray("4.1", "Forward Plus")
 
+[autoload]
+
+Global="*res://Global.gd"
+
 [display]
 
 window/stretch/mode="canvas_items"

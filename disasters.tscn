@@ -92,6 +92,9 @@ color = Color(0.490196, 0.552941, 1, 1)
 [node name="acid_tint" type="CanvasModulate" parent="."]
 color = Color(0.380392, 0.647059, 0.0352941, 1)
 
+[node name="meteor_tint" type="CanvasModulate" parent="."]
+color = Color(0.231373, 0.231373, 0.231373, 1)
+
 [node name="weather_timer" type="Timer" parent="."]
 wait_time = 15.0
 one_shot = true
@@ -100,7 +103,6 @@ autostart = true
 [node name="disaster_techs" type="CanvasLayer" parent="."]
 
 [node name="acid_rain_tech" type="Node2D" parent="disaster_techs"]
-visible = false
 
 [node name="acid_rain" type="GPUParticles2D" parent="disaster_techs/acid_rain_tech"]
 position = Vector2(578, 0)
@@ -113,7 +115,6 @@ speed_scale = 1.5
 randomness = 1.0
 
 [node name="lightning_tech" type="Node2D" parent="disaster_techs"]
-visible = false
 
 [node name="thunderFlash" type="AnimationPlayer" parent="disaster_techs/lightning_tech"]
 libraries = {
@@ -144,16 +145,18 @@ randomness = 1.0
 [node name="meteor_tech" type="Node2D" parent="disaster_techs"]
 
 [node name="meteor_storm" type="GPUParticles2D" parent="disaster_techs/meteor_tech"]
-position = Vector2(843, -47)
+position = Vector2(947, -219)
 rotation = 3.73792
-scale = Vector2(7.15107, 10.5893)
-emitting = false
-amount = 20
+scale = Vector2(6.69085, -13.5803)
+amount = 10
 process_material = SubResource("ParticleProcessMaterial_kqjln")
 texture = ExtResource("3_h6lvo")
-lifetime = 5.0
-speed_scale = 12.56
+lifetime = 5.5
+preprocess = 75.0
+speed_scale = 0.5
 randomness = 1.0
+
+[node name="earthquake_tech" type="Node2D" parent="disaster_techs"]
 
 [connection signal="timeout" from="weather_timer" to="." method="_on_weather_timer_timeout"]
 [connection signal="timeout" from="disaster_techs/lightning_tech/lightning_timer" to="." method="_on_lightning_timer_timeout"]

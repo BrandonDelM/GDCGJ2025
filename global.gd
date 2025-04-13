@@ -1,3 +1,3 @@
 extends Node
 
-var weather
+var shake : String = "false"
