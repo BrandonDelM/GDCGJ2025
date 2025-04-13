@@ -37,4 +37,3 @@ func _input(event):
 func place_tile(tile_pos: Vector2i):
 	ground.set_cell(tile_pos, source_id, selected_tile)
 	preview.erase_cell(tile_pos)
-

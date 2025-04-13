@@ -1,24 +1,37 @@
 [gd_scene load_steps=17 format=3 uid="uid://dfwftdkk3lipp"]
 
-[ext_resource type="Script" path="res://disasters.gd" id="1_bm8e2"]
+[ext_resource type="Script" uid="uid://c6th6uwfrkopq" path="res://disasters.gd" id="1_bm8e2"]
 [ext_resource type="Texture2D" uid="uid://b0qxjkeo5kgse" path="res://assets/rain.png" id="2_q3n15"]
 [ext_resource type="Texture2D" uid="uid://dhwyagwcnxv5r" path="res://assets/meteor.png" id="3_h6lvo"]
 [ext_resource type="Texture2D" uid="uid://c5nolx1jsfd83" path="res://assets/Clouds.jpg" id="4_eis38"]
-[ext_resource type="Script" path="res://fog.gd" id="5_cj5aq"]
+[ext_resource type="Script" uid="uid://druseetp0eidp" path="res://fog.gd" id="5_cj5aq"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_7l6pm"]
 texture = ExtResource("4_eis38")
 modulate_color = Color(0.364706, 0.364706, 0.364706, 1)
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_v03ps"]
+particle_flag_disable_z = true
 emission_shape = 3
 emission_box_extents = Vector3(100, 1, 1)
-particle_flag_disable_z = true
 gravity = Vector3(0, 98, 0)
-orbit_velocity_min = 0.0
-orbit_velocity_max = 0.0
 scale_min = 1.25
 scale_max = 1.4
+
+[sub_resource type="Animation" id="Animation_6vgqn"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("thunderFlash/TextureRect:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
 
 [sub_resource type="Animation" id="Animation_pf2c4"]
 resource_name = "thunder"
@@ -37,25 +50,10 @@ tracks/0/keys = {
 "values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
 }
 
-[sub_resource type="Animation" id="Animation_6vgqn"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("thunderFlash/TextureRect:modulate")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Color(1, 1, 1, 0)]
-}
-
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_myuqq"]
 _data = {
-"RESET": SubResource("Animation_6vgqn"),
-"lightning": SubResource("Animation_pf2c4")
+&"RESET": SubResource("Animation_6vgqn"),
+&"lightning": SubResource("Animation_pf2c4")
 }
 
 [sub_resource type="Gradient" id="Gradient_qnumq"]
@@ -67,34 +65,28 @@ fill_from = Vector2(0, 1)
 fill_to = Vector2(0, 0)
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_nl4v7"]
+particle_flag_disable_z = true
 emission_shape = 3
 emission_box_extents = Vector3(100, 1, 1)
-particle_flag_disable_z = true
 direction = Vector3(0, 0, 0)
 spread = 58.24
 gravity = Vector3(0, 98, 0)
-orbit_velocity_min = 0.0
-orbit_velocity_max = 0.0
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_kqjln"]
+particle_flag_disable_z = true
 emission_shape = 3
 emission_box_extents = Vector3(100, 1, 1)
-particle_flag_disable_z = true
 direction = Vector3(1, -100, 0)
 spread = 180.0
 gravity = Vector3(-45, 90, 0)
-orbit_velocity_min = 0.0
-orbit_velocity_max = 0.0
 scale_min = 0.2
 scale_max = 0.2
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_lsx2i"]
+particle_flag_disable_z = true
 emission_shape = 3
 emission_box_extents = Vector3(600, 1, 1)
-particle_flag_disable_z = true
 gravity = Vector3(0, 98, 0)
-orbit_velocity_min = 0.0
-orbit_velocity_max = 0.0
 scale_min = 4.0
 scale_max = 4.0
 color = Color(0.866667, 0.74902, 0.772549, 0.352941)
@@ -102,8 +94,6 @@ color = Color(0.866667, 0.74902, 0.772549, 0.352941)
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_yodv6"]
 particle_flag_disable_z = true
 gravity = Vector3(0, 98, 0)
-orbit_velocity_min = 0.0
-orbit_velocity_max = 0.0
 
 [node name="disasters" type="StaticBody2D"]
 script = ExtResource("1_bm8e2")
@@ -150,18 +140,18 @@ visible = false
 position = Vector2(578, 0)
 scale = Vector2(5.89256, 7.60056)
 amount = 1000
-process_material = SubResource("ParticleProcessMaterial_v03ps")
 texture = ExtResource("2_q3n15")
 lifetime = 4.0
 speed_scale = 1.5
 randomness = 1.0
+process_material = SubResource("ParticleProcessMaterial_v03ps")
 
 [node name="lightning_tech" type="Node2D" parent="disaster_techs"]
 visible = false
 
 [node name="thunderFlash" type="AnimationPlayer" parent="disaster_techs/lightning_tech"]
 libraries = {
-"": SubResource("AnimationLibrary_myuqq")
+&"": SubResource("AnimationLibrary_myuqq")
 }
 
 [node name="TextureRect" type="TextureRect" parent="disaster_techs/lightning_tech/thunderFlash"]
@@ -179,11 +169,11 @@ visible = false
 position = Vector2(576, -20)
 scale = Vector2(6, 7)
 amount = 500
-process_material = SubResource("ParticleProcessMaterial_nl4v7")
 texture = ExtResource("2_q3n15")
 lifetime = 3.7
 speed_scale = 2.0
 randomness = 1.0
+process_material = SubResource("ParticleProcessMaterial_nl4v7")
 
 [node name="lightning_timer" type="Timer" parent="disaster_techs/lightning_tech"]
 
@@ -196,12 +186,12 @@ position = Vector2(947, -219)
 rotation = 3.73792
 scale = Vector2(6.69085, -13.5803)
 amount = 10
-process_material = SubResource("ParticleProcessMaterial_kqjln")
 texture = ExtResource("3_h6lvo")
 lifetime = 5.5
 preprocess = 75.0
 speed_scale = 0.5
 randomness = 1.0
+process_material = SubResource("ParticleProcessMaterial_kqjln")
 
 [node name="blizzard_tech" type="Node2D" parent="disaster_techs"]
 visible = false
@@ -211,11 +201,11 @@ position = Vector2(0, -1)
 visible = false
 position = Vector2(577, -13)
 amount = 500
-process_material = SubResource("ParticleProcessMaterial_lsx2i")
 texture = ExtResource("2_q3n15")
 lifetime = 3.8
 speed_scale = 3.58
 randomness = 1.0
+process_material = SubResource("ParticleProcessMaterial_lsx2i")
 
 [node name="fire_tech" type="Node2D" parent="disaster_techs"]
 
