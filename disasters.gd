@@ -32,6 +32,7 @@ func _on_weather_timer_timeout():
 		disaster_state = disasters[randi() % disasters.size()]
 		$weather_timer.wait_time = randi_range(60,120)
 		$weather_timer.start()
+		disaster_state = "fog"
 		if disaster_state == "storm":
 			print("thunder")
 			thunder_strike()
@@ -43,15 +44,18 @@ func _on_weather_timer_timeout():
 			print("earthquake")
 		elif disaster_state == "fog":
 			Global.fog = "true"
-			$disaster_techs/fog_tech/fog_timer.wait_time = 5
-			$disaster_techs/fog_tech/fog_timer.start()
+			$disaster_techs/fog_tech/fog/fog_timer.wait_time = 5
+			$disaster_techs/fog_tech/fog/fog_timer.start()
 			print("fog")
 			
 	else:
 		disaster_state = "none"
 		Global.shake = "false"
+		Global.fog = "false"
 		$disaster_techs/lightning_tech/lightning_timer.stop()
 		$weather_timer.wait_time = 10
+		$disaster_techs/fog_tech/fog/fog_timer.wait_time = 5
+		$disaster_techs/fog_tech/fog/fog_timer.start()
 		$weather_timer.start()
 
 

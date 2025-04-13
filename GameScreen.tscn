@@ -1,18 +1,12 @@
-[gd_scene load_steps=9 format=3 uid="uid://b38wxcjn6jt3m"]
+[gd_scene load_steps=8 format=3 uid="uid://b38wxcjn6jt3m"]
 
-[ext_resource type="Texture2D" uid="uid://cx0e1qw7gfdrb" path="res://assets/imprtileset.png" id="1_wtcfe"]
-[ext_resource type="Texture2D" uid="uid://dphkru3wxfehc" path="res://assets/Vegetables.png" id="2_8mj3a"]
-[ext_resource type="Script" path="res://shake.gd" id="3_2y4bd"]
-[ext_resource type="PackedScene" uid="uid://dfwftdkk3lipp" path="res://disasters.tscn" id="4_v10x4"]
-
-[sub_resource type="GDScript" id="GDScript_rw05s"]
-script/source = "extends Node
-
-var weather
-"
+[ext_resource type="Texture2D" uid="uid://cx0e1qw7gfdrb" path="res://assets/imprtileset.png" id="1_la7id"]
+[ext_resource type="Texture2D" uid="uid://dphkru3wxfehc" path="res://assets/Vegetables.png" id="2_1oe3f"]
+[ext_resource type="Script" path="res://shake.gd" id="3_t8ddp"]
+[ext_resource type="PackedScene" uid="uid://dfwftdkk3lipp" path="res://disasters.tscn" id="4_7yrct"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_0e48y"]
-texture = ExtResource("1_wtcfe")
+texture = ExtResource("1_la7id")
 1:14/0 = 0
 1:16/0 = 0
 1:15/0 = 0
@@ -72,7 +66,7 @@ texture = ExtResource("1_wtcfe")
 5:8/0 = 0
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_yi228"]
-texture = ExtResource("2_8mj3a")
+texture = ExtResource("2_1oe3f")
 4:0/0 = 0
 0:1/0 = 0
 1:1/0 = 0
@@ -111,7 +105,6 @@ sources/0 = SubResource("TileSetAtlasSource_0e48y")
 sources/1 = SubResource("TileSetAtlasSource_yi228")
 
 [node name="GameScreen" type="Node2D"]
-script = SubResource("GDScript_rw05s")
 
 [node name="GameTiles" type="TileMap" parent="."]
 tile_set = SubResource("TileSet_4n1hq")
@@ -142,6 +135,6 @@ layer_3/tile_data = PackedInt32Array(1114112, 1048576, 10, 1179648, 1048576, 11,
 
 [node name="GameCamera" type="Camera2D" parent="."]
 position = Vector2(581, 320)
-script = ExtResource("3_2y4bd")
+script = ExtResource("3_t8ddp")
 
-[node name="disasters" parent="." instance=ExtResource("4_v10x4")]
+[node name="disasters" parent="." instance=ExtResource("4_7yrct")]
