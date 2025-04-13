@@ -40,9 +40,11 @@ func _on_weather_timer_timeout():
 	if disaster_state == "none":
 		disaster_state = disasters[randi() % disasters.size()]
 		show_side(disaster_state)
-		#$weather_timer.wait_time = randi_range(60,90)
-		$weather_timer.wait_time = 10
+		var time : int = randi_range(60,90)
+		$weather_timer.wait_time = time
 		$weather_timer.start()
+		$destroy_timer.wait_time = randi_range(0, time)
+		$destroy_timer.start()
 		if disaster_state == "storm":
 			print("thunder")
 			thunder_strike()
@@ -103,13 +105,40 @@ func show_side(message):
 	var tween : Tween = side_label.create_tween()
 	tween.tween_interval(2.5)
 	tween.tween_callback(side_label.queue_free)
+	
+func destroy_message(message):
+	var side_label : Label = side_label_node.instantiate()
+	side_label.text = message
+	noti_ui.add_child(side_label)
+	
+	var tween : Tween = side_label.create_tween()
+	tween.tween_interval(2.5)
+	tween.tween_callback(side_label.queue_free)
 
-func damage():
+func _on_destroy_timer_timeout() -> void:
 	$destroy_timer.wait_time = randi_range(5, 20)
 	$destroy_timer.start()
 	if (disaster_state == "meteor"):
-		print("Destroy!")
-		
-
-func _on_destroy_timer_timeout() -> void:
-	pass # Replace with function body.
+		var x = randi_range(0, 19)
+		var y = randi_range(0, 19)
+		for i in range(x, x+1):
+			for j in range(y, y+1):
+				print("Test")
+	elif (disaster_state == "fog"):
+		destroy_message("A human has died...");
+	elif (disaster_state == "heatwave"):
+		destroy_message("A human has died...");
+	elif (disaster_state == "acid"):
+		destroy_message("A human has died...");
+		if (Global.buildings.size() != 0):
+			var destroy = randi_range(0, Global.buildings.size()-1)
+			Global.buildings.remove_at(destroy)
+			destroy_message("A building has been destroyed!");
+	elif (disaster_state == "blizard"):
+		destroy_message("A human has died...");
+		print("Destroy a building")
+	elif (disaster_state == "earthquake"):
+		print("Destroy a building")
+	elif (disaster_state == "storm"):
+		var x = randi_range(0, 20)
+		var y = randi_range(0, 20)

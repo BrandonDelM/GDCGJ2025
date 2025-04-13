@@ -121,6 +121,9 @@ color = Color(0.231373, 0.231373, 0.231373, 1)
 [node name="heatwave_tint" type="CanvasModulate" parent="."]
 color = Color(0.992157, 1, 0, 1)
 
+[node name="destroy_timer" type="Timer" parent="."]
+one_shot = true
+
 [node name="weather_timer" type="Timer" parent="."]
 wait_time = 15.0
 one_shot = true
@@ -214,5 +217,6 @@ theme_override_styles/panel = SubResource("StyleBoxTexture_7l6pm")
 [node name="blizzard_tint" type="CanvasModulate" parent="."]
 color = Color(0.254902, 0.215686, 0.243137, 1)
 
+[connection signal="timeout" from="destroy_timer" to="." method="_on_destroy_timer_timeout"]
 [connection signal="timeout" from="weather_timer" to="." method="_on_weather_timer_timeout"]
 [connection signal="timeout" from="disaster_techs/lightning_tech/lightning_timer" to="." method="_on_lightning_timer_timeout"]
