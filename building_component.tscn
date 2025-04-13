@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://bnrnleeopslvr"]
 
-[ext_resource type="Script" uid="uid://c5h5ub1l5uyqq" path="res://building_component.gd" id="1_56rvc"]
+[ext_resource type="Script" uid="uid://qp241tw5t752" path="res://building_component.gd" id="1_56rvc"]
 
 [node name="building_component" type="Panel"]
 offset_right = 150.0

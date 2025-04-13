@@ -1,6 +1,6 @@
-[gd_scene load_steps=3 format=3 uid="uid://bhadttx6f65ue"]
+[gd_scene load_steps=3 format=3 uid="uid://dut0tjom08ff"]
 
-[ext_resource type="Script" uid="uid://bt7may6k55gyh" path="res://test_income_generator.gd" id="1_5c3ox"]
+[ext_resource type="Script" uid="uid://c5ishdhebjwp5" path="res://test_income_generator.gd" id="1_5c3ox"]
 [ext_resource type="PackedScene" uid="uid://bnrnleeopslvr" path="res://building_component.tscn" id="2_meicg"]
 
 [node name="resources_menu" type="Control"]
@@ -52,6 +52,18 @@ offset_left = 32.0001
 offset_top = 53.0
 offset_right = 182.0
 offset_bottom = 93.0
+MIN_COST = 10
+MIN_AMOUNT = 1
+MONEY_GEN = 0.5
+
+[node name="building_component2" parent="Panel" instance=ExtResource("2_meicg")]
+layout_mode = 0
+offset_left = 33.0001
+offset_top = 103.0
+offset_right = 183.0
+offset_bottom = 143.0
+MIN_COST = 100
+MONEY_GEN = 5.0
 
 [node name="money_timer" type="Timer" parent="."]
 
