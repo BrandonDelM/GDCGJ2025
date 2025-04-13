@@ -9,6 +9,7 @@ const disasters = ["acid", "storm", "meteor", "earthquake", "fog", "blizzard", "
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	$title_music.play()
 	hide_all()
 	print("New game!")
 
@@ -37,6 +38,7 @@ func _process(delta):
 		$heatwave_tint.visible = true
 
 func _on_weather_timer_timeout():
+	$title_music.stop()
 	if disaster_state == "none":
 		disaster_state = disasters[randi() % disasters.size()]
 		show_side(disaster_state)
@@ -45,27 +47,37 @@ func _on_weather_timer_timeout():
 		$weather_timer.start()
 		$destroy_timer.wait_time = randi_range(0, time)
 		$destroy_timer.start()
-		disaster_state = "storm"
+		disaster_state = "heatwave"
 		if disaster_state == "storm":
-			$blizzard.playing = true
+			$blizzard_audio.play()
 			print("thunder")
 			thunder_strike()
 		elif disaster_state == "acid":
+			$acid_audio.play()
 			print("acid")
 		elif disaster_state == "meteor":
+			$meteor_audio.play()
 			print("meteor")
 		elif disaster_state == "earthquake":
+			$earthquake_audio.play()
 			print("earthquake")
 		elif disaster_state == "fog":
+			$fog_audio.play()
 			print("fog")
 		elif disaster_state == "blizzard":
-			$blizzard.playing = true
+			$blizzard.play()
 			print("blizzard")
 		elif disaster_state == "heatwave":
 			print("heatwave")
 	else:
 		fade_out()
-		$blizzard.playing = false
+		$blizzard_audio.stop()
+		$acid_audio.stop()
+		$fog_audio.stop()
+		$earthquake_audio.stop()
+		$meteor_audio.stop()
+		$storm_audio.stop()
+		$title_music.play()
 		disaster_state = "none"
 		Global.shake = "false"
 		Global.fog = "false"
