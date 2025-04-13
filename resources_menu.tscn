@@ -1,7 +1,7 @@
-[gd_scene load_steps=3 format=3 uid="uid://dut0tjom08ff"]
+[gd_scene load_steps=3 format=3 uid="uid://sc7gskfav2vf"]
 
-[ext_resource type="Script" uid="uid://c5ishdhebjwp5" path="res://test_income_generator.gd" id="1_5c3ox"]
-[ext_resource type="PackedScene" uid="uid://bnrnleeopslvr" path="res://building_component.tscn" id="2_meicg"]
+[ext_resource type="Script" path="res://test_income_generator.gd" id="1_5c3ox"]
+[ext_resource type="PackedScene" uid="uid://dt711s3yvydrm" path="res://building_component.tscn" id="2_meicg"]
 
 [node name="resources_menu" type="Control"]
 layout_mode = 3
