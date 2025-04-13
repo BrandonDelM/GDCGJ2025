@@ -45,7 +45,9 @@ func _on_weather_timer_timeout():
 		$weather_timer.start()
 		$destroy_timer.wait_time = randi_range(0, time)
 		$destroy_timer.start()
+		disaster_state = "storm"
 		if disaster_state == "storm":
+			$blizzard.playing = true
 			print("thunder")
 			thunder_strike()
 		elif disaster_state == "acid":
@@ -57,17 +59,18 @@ func _on_weather_timer_timeout():
 		elif disaster_state == "fog":
 			print("fog")
 		elif disaster_state == "blizzard":
+			$blizzard.playing = true
 			print("blizzard")
 		elif disaster_state == "heatwave":
 			print("heatwave")
 	else:
 		fade_out()
+		$blizzard.playing = false
 		disaster_state = "none"
 		Global.shake = "false"
 		Global.fog = "false"
 		$disaster_techs/lightning_tech/lightning_timer.stop()
-		#$weather_timer.wait_time = randi_range(60, 120)
-		$weather_timer.wait_time = 15
+		$weather_timer.wait_time = randi_range(60, 120)
 		$weather_timer.start()
 
 func _on_lightning_timer_timeout():
@@ -144,5 +147,8 @@ func _on_destroy_timer_timeout() -> void:
 	elif (disaster_state == "earthquake"):
 		print("Destroy a building")
 	elif (disaster_state == "storm"):
-		var x = randi_range(0, 20)
-		var y = randi_range(0, 20)
+		if (Global.buildings.size() != 0):
+			var destroy = randi_range(0, Global.buildings.size()-1)
+			var tile : Vector2i = Global.buildings[destroy-1]
+			Global.buildings.remove_at(destroy)
+			destroy_message("A building has been destroyed!");

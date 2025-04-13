@@ -44,17 +44,14 @@ func _physics_process(delta):
 	if Global.select_mode:
 		preview_tile = get_snapped_position(get_global_mouse_position())
 
+func remove(area : Vector2i):
+	ground.erase_cell(area)
+
 func _input(event):
 	if event is InputEventMouseButton and event.pressed:
 		if event.button_index == MOUSE_BUTTON_LEFT and Global.select_mode and placeable:
 			place_tile(preview_tile)
 			Global.select_mode = false
-	
-#	if event is InputEventKey:
-#		if event.keycode == KEY_1 and event.pressed:
-#			select_mode = true
-#			source_id = 0
-#			selected_tile = Vector2i(15,12)
 
 func place_tile(tile_pos : Vector2i):
 	ground.set_cell(0, tile_pos, Global.source_id, Global.selected_tile)
