@@ -1,6 +1,7 @@
 class_name main_panel extends Control
 
 @onready var money_label: Label = $Panel/money_label
+@onready var people_label: Label = $Panel/people_label
 @onready var money_timer: Timer = $Panel/money_timer
 
 func _ready() -> void:
@@ -12,6 +13,7 @@ func _process(delta) -> void:
 
 func update_labels():
 	money_label.text = "$$$: " + str(Global.money_value)
+	people_label.text = "People: " + str(Global.people_value)
 
 func _on_test_button_pressed_grant_money() -> void:
 	Global.money_value += 1

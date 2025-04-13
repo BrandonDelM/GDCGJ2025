@@ -38,6 +38,14 @@ offset_bottom = 61.0
 text = "$$$: "
 vertical_alignment = 1
 
+[node name="people_label" type="Label" parent="Panel"]
+layout_mode = 0
+offset_left = 14.0001
+offset_top = 49.0
+offset_right = 207.0
+offset_bottom = 76.0
+text = "People: "
+
 [node name="test_income_generator" type="Button" parent="Panel"]
 layout_mode = 0
 offset_left = 40.0
@@ -48,22 +56,25 @@ text = "Generate $$$"
 
 [node name="building_component" parent="Panel" instance=ExtResource("2_meicg")]
 layout_mode = 0
-offset_left = 32.0001
-offset_top = 53.0
-offset_right = 182.0
-offset_bottom = 93.0
+offset_left = 14.0
+offset_top = 79.0
+offset_right = 164.0
+offset_bottom = 119.0
 MIN_COST = 10
-MIN_AMOUNT = 1
-MONEY_GEN = 0.5
+MIN_AMOUNT = 5
+MONEY_GEN = 0.2
+BUILDING_NAME = "Sell Goods"
 
 [node name="building_component2" parent="Panel" instance=ExtResource("2_meicg")]
 layout_mode = 0
-offset_left = 33.0001
-offset_top = 103.0
-offset_right = 183.0
-offset_bottom = 143.0
+offset_left = 13.0
+offset_top = 126.0
+offset_right = 163.0
+offset_bottom = 166.0
 MIN_COST = 100
-MONEY_GEN = 5.0
+MIN_AMOUNT = 1
+PEOPLE_GEN = 5
+BUILDING_NAME = "House"
 
 [node name="money_timer" type="Timer" parent="."]
 
