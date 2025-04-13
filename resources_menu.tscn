@@ -47,6 +47,7 @@ offset_bottom = 76.0
 text = "People: "
 
 [node name="test_income_generator" type="Button" parent="Panel"]
+visible = false
 layout_mode = 0
 offset_left = 40.0
 offset_top = 564.0
@@ -76,7 +77,8 @@ MIN_AMOUNT = 1
 PEOPLE_GEN = 5
 BUILDING_NAME = "House"
 
-[node name="money_timer" type="Timer" parent="."]
+[node name="Timer" type="Timer" parent="Panel"]
+autostart = true
 
 [connection signal="pressed" from="Panel/test_income_generator" to="." method="_on_test_button_pressed_grant_money"]
-[connection signal="timeout" from="money_timer" to="." method="_on_money_timer_timeout"]
+[connection signal="timeout" from="Panel/Timer" to="." method="_on_timer_timeout"]

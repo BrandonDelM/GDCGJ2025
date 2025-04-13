@@ -1,5 +1,4 @@
-class_name building
-extends Panel
+class_name building extends Panel
 
 @export var MIN_COST : int
 @export var MIN_AMOUNT : int
@@ -15,7 +14,6 @@ var building_people_gen : int
 @onready var amount_text: Label = $amount_text
 @onready var cost_text: Label = $cost_text
 @onready var buy_button: Button = $buy_button
-
 
 func _ready() -> void:
 	building_cost = MIN_COST
@@ -33,7 +31,7 @@ func update():
 
 func generate_money():
 	if building_amount > 0 and building_generation != 0:
-		Global.money_value += (building_generation * building_amount) + (Global.people_value * 1)
+		Global.money_value += building_generation * building_amount
 	update()
 
 func generate_people():
