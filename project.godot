@@ -16,7 +16,8 @@ config/features=PackedStringArray("4.4", "Forward Plus")
 
 [autoload]
 
-Global="*res://global.gd"
+Global="*res://Global.gd"
+BuildManager="*res://build_manager.gd"
 
 [display]
 
