@@ -1,7 +1,7 @@
 extends StaticBody2D
 
 var disaster_state = "none"
-const disasters = ["acid", "storm", "meteor", "earthquake"]
+const disasters = ["acid", "storm", "meteor", "earthquake", "fog"]
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -23,6 +23,8 @@ func _process(delta):
 		$meteor_tint.visible = true
 	elif disaster_state == "earthquake":
 		Global.shake = "true"
+	elif disaster_state == "fog":
+		Global.fog = "true"
 
 
 func _on_weather_timer_timeout():
@@ -39,6 +41,11 @@ func _on_weather_timer_timeout():
 			print("meteor")
 		elif disaster_state == "earthquake":
 			print("earthquake")
+		elif disaster_state == "fog":
+			Global.fog = "true"
+			$disaster_techs/fog_tech/fog_timer.wait_time = 5
+			$disaster_techs/fog_tech/fog_timer.start()
+			print("fog")
 			
 	else:
 		disaster_state = "none"
@@ -65,3 +72,4 @@ func hide_all():
 	$storm_tint.visible = false
 	$disaster_techs/meteor_tech/meteor_storm.visible = false
 	$meteor_tint.visible = false
+	$disaster_techs/fog_tech/fog.visible = false
