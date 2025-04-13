@@ -1,6 +1,5 @@
 extends StaticBody2D
 
-var disaster_state = "none"
 const disasters = ["acid", "storm", "meteor", "earthquake", "fog", "blizzard", "heatwave"]
 
 @export var side_label_node : PackedScene = preload("res://side_label.tscn")
@@ -67,7 +66,7 @@ func _on_weather_timer_timeout():
 		#$weather_timer.wait_time = randi_range(60, 120)
 		$weather_timer.wait_time = 15
 		$weather_timer.start()
-
+  
 func _on_lightning_timer_timeout():
 	thunder_strike()
 	
@@ -82,7 +81,6 @@ func fade_in():
 	
 func fade_out():
 	$disaster_techs/fog_tech/fog.self_modulate.a = 0.0
-
 func hide_all():
 	$disaster_techs/acid_rain_tech/acid_rain.visible = false
 	$acid_tint.visible = false
@@ -91,6 +89,7 @@ func hide_all():
 	$disaster_techs/meteor_tech/meteor_storm.visible = false
 	$meteor_tint.visible = false
 	$disaster_techs/fog_tech/fog.visible = false
+ 
 	$blizzard_tint.visible = false
 	$disaster_techs/blizzard_tech/blizzard_storm.visible = false
 	$heatwave_tint.visible = false

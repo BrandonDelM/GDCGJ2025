@@ -1,0 +1,41 @@
+[gd_scene load_steps=2 format=3 uid="uid://bnrnleeopslvr"]
+
+[ext_resource type="Script" uid="uid://qp241tw5t752" path="res://building_component.gd" id="1_56rvc"]
+
+[node name="building_component" type="Panel"]
+offset_right = 150.0
+offset_bottom = 40.0
+script = ExtResource("1_56rvc")
+
+[node name="buy_button" type="Button" parent="."]
+layout_mode = 0
+offset_right = 150.0
+offset_bottom = 40.0
+text = "Building"
+alignment = 0
+
+[node name="amount_text" type="Label" parent="."]
+layout_mode = 0
+offset_left = 110.0
+offset_top = 1.0
+offset_right = 150.0
+offset_bottom = 14.0
+theme_override_font_sizes/font_size = 9
+text = "0"
+horizontal_alignment = 1
+
+[node name="cost_text" type="Label" parent="."]
+layout_mode = 0
+offset_left = 110.0
+offset_top = 27.0
+offset_right = 150.0
+offset_bottom = 40.0
+theme_override_font_sizes/font_size = 9
+text = "$"
+horizontal_alignment = 1
+
+[node name="Timer" type="Timer" parent="."]
+autostart = true
+
+[connection signal="pressed" from="buy_button" to="." method="_on_building_buy_button_pressed"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

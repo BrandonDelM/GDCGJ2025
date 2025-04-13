@@ -208,7 +208,6 @@ offset_top = -1.0
 offset_right = 1152.0
 offset_bottom = 647.0
 theme_override_styles/panel = SubResource("StyleBoxTexture_7l6pm")
-
 [node name="fog_timer" type="Timer" parent="disaster_techs/fog_tech/fog"]
 
 [node name="blizzard_tint" type="CanvasModulate" parent="."]

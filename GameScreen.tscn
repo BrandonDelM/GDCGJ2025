@@ -1,5 +1,3 @@
-[gd_scene load_steps=11 format=3 uid="uid://b38wxcjn6jt3m"]
-
 [ext_resource type="Texture2D" uid="uid://cx0e1qw7gfdrb" path="res://assets/imprtileset.png" id="1_la7id"]
 [ext_resource type="Texture2D" uid="uid://dphkru3wxfehc" path="res://assets/Vegetables.png" id="2_1oe3f"]
 [ext_resource type="Script" uid="uid://cqcn3tcveusla" path="res://shake.gd" id="3_t8ddp"]
@@ -129,3 +127,4 @@ script = ExtResource("3_t8ddp")
 [node name="TestScene" parent="." instance=ExtResource("6_0n56p")]
 
 [node name="BuildManager" parent="." instance=ExtResource("7_7vgwn")]
+>>>>>>> Brandon-Branch-Safe
