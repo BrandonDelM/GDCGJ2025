@@ -1,9 +1,32 @@
-[gd_scene format=3 uid="uid://djsx1cnidoqmp"]
+[gd_scene load_steps=2 format=3 uid="uid://djsx1cnidoqmp"]
 
-[node name="notifications" type="Control"]
-layout_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
+[sub_resource type="GDScript" id="GDScript_nb8mc"]
+script/source = "extends CanvasLayer
+
+@export var debug : bool = false
+@export var side_label_node : PackedScene = preload(\"res://side_label.tscn\")
+
+@onready var noti_ui = $noti_ui
+
+func show_side(message):
+	var side_label : Label = side_label_node.instantiate()
+	side_label.text = message + \" is coming!\"
+	noti_ui.add_child(side_label)
+	
+	var tween : Tween = side_label.create_tween()
+	tween.tween_interval(2.5)
+	tween.tween_callback(side_label.queue_free)
+"
+
+[node name="notifications" type="CanvasLayer"]
+script = SubResource("GDScript_nb8mc")
+
+[node name="noti_ui" type="VBoxContainer" parent="."]
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 16.0
+offset_top = -92.0
+offset_right = 268.0
+offset_bottom = 324.0
 grow_vertical = 2

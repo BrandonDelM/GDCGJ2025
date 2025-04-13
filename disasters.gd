@@ -2,7 +2,10 @@ extends StaticBody2D
 
 var disaster_state = "none"
 const disasters = ["acid", "storm", "meteor", "earthquake", "fog", "blizzard", "heatwave"]
-var fog_state = "false"
+
+@export var side_label_node : PackedScene = preload("res://side_label.tscn")
+
+@onready var noti_ui = $notify_tech/noti_ui
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -36,9 +39,10 @@ func _process(delta):
 func _on_weather_timer_timeout():
 	if disaster_state == "none":
 		disaster_state = disasters[randi() % disasters.size()]
-		$weather_timer.wait_time = randi_range(60,90)
+		show_side(disaster_state)
+		#$weather_timer.wait_time = randi_range(60,90)
+		$weather_timer.wait_time = 10
 		$weather_timer.start()
-		disaster_state = "heatwave"
 		if disaster_state == "storm":
 			print("thunder")
 			thunder_strike()
@@ -54,16 +58,15 @@ func _on_weather_timer_timeout():
 			print("blizzard")
 		elif disaster_state == "heatwave":
 			print("heatwave")
-			
 	else:
 		fade_out()
 		disaster_state = "none"
 		Global.shake = "false"
 		Global.fog = "false"
 		$disaster_techs/lightning_tech/lightning_timer.stop()
-		$weather_timer.wait_time = 10
+		#$weather_timer.wait_time = randi_range(60, 120)
+		$weather_timer.wait_time = 15
 		$weather_timer.start()
-
 
 func _on_lightning_timer_timeout():
 	thunder_strike()
@@ -78,7 +81,7 @@ func fade_in():
 	$disaster_techs/fog_tech/fog.self_modulate.a = 0.5
 	
 func fade_out():
-	$disaster_techs/fog_tech/fog.modulate.a = 0.0
+	$disaster_techs/fog_tech/fog.self_modulate.a = 0.0
 
 func hide_all():
 	$disaster_techs/acid_rain_tech/acid_rain.visible = false
@@ -91,3 +94,12 @@ func hide_all():
 	$blizzard_tint.visible = false
 	$disaster_techs/blizzard_tech/blizzard_storm.visible = false
 	$heatwave_tint.visible = false
+
+func show_side(message):
+	var side_label : Label = side_label_node.instantiate()
+	side_label.text = "A " + message + " has arrived!"
+	noti_ui.add_child(side_label)
+	
+	var tween : Tween = side_label.create_tween()
+	tween.tween_interval(2.5)
+	tween.tween_callback(side_label.queue_free)

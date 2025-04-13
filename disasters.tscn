@@ -1,14 +1,9 @@
-[gd_scene load_steps=17 format=3 uid="uid://dfwftdkk3lipp"]
+[gd_scene load_steps=16 format=3 uid="uid://dfwftdkk3lipp"]
 
 [ext_resource type="Script" uid="uid://c6th6uwfrkopq" path="res://disasters.gd" id="1_bm8e2"]
 [ext_resource type="Texture2D" uid="uid://b0qxjkeo5kgse" path="res://assets/rain.png" id="2_q3n15"]
 [ext_resource type="Texture2D" uid="uid://dhwyagwcnxv5r" path="res://assets/meteor.png" id="3_h6lvo"]
 [ext_resource type="Texture2D" uid="uid://c5nolx1jsfd83" path="res://assets/Clouds.jpg" id="4_eis38"]
-[ext_resource type="Script" uid="uid://druseetp0eidp" path="res://fog.gd" id="5_cj5aq"]
-
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_7l6pm"]
-texture = ExtResource("4_eis38")
-modulate_color = Color(0.364706, 0.364706, 0.364706, 1)
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_v03ps"]
 particle_flag_disable_z = true
@@ -95,8 +90,24 @@ color = Color(0.866667, 0.74902, 0.772549, 0.352941)
 particle_flag_disable_z = true
 gravity = Vector3(0, 98, 0)
 
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_7l6pm"]
+texture = ExtResource("4_eis38")
+modulate_color = Color(0.364706, 0.364706, 0.364706, 1)
+
 [node name="disasters" type="StaticBody2D"]
+visible = false
 script = ExtResource("1_bm8e2")
+
+[node name="notify_tech" type="CanvasLayer" parent="."]
+
+[node name="noti_ui" type="VBoxContainer" parent="notify_tech"]
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_top = -92.0
+offset_right = 252.0
+offset_bottom = 324.0
+grow_vertical = 2
 
 [node name="storm_tint" type="CanvasModulate" parent="."]
 color = Color(0.490196, 0.552941, 1, 1)
@@ -116,27 +127,10 @@ one_shot = true
 autostart = true
 
 [node name="disaster_techs" type="CanvasLayer" parent="."]
-visible = false
-
-[node name="fog_tech" type="Node2D" parent="disaster_techs"]
-visible = false
-
-[node name="fog" type="Panel" parent="disaster_techs/fog_tech"]
-visible = false
-custom_minimum_size = Vector2(1152, 648)
-offset_top = -1.0
-offset_right = 1152.0
-offset_bottom = 647.0
-theme_override_styles/panel = SubResource("StyleBoxTexture_7l6pm")
-script = ExtResource("5_cj5aq")
-
-[node name="fog_timer" type="Timer" parent="disaster_techs/fog_tech/fog"]
 
 [node name="acid_rain_tech" type="Node2D" parent="disaster_techs"]
-visible = false
 
 [node name="acid_rain" type="GPUParticles2D" parent="disaster_techs/acid_rain_tech"]
-visible = false
 position = Vector2(578, 0)
 scale = Vector2(5.89256, 7.60056)
 amount = 1000
@@ -147,7 +141,6 @@ randomness = 1.0
 process_material = SubResource("ParticleProcessMaterial_v03ps")
 
 [node name="lightning_tech" type="Node2D" parent="disaster_techs"]
-visible = false
 
 [node name="thunderFlash" type="AnimationPlayer" parent="disaster_techs/lightning_tech"]
 libraries = {
@@ -155,7 +148,6 @@ libraries = {
 }
 
 [node name="TextureRect" type="TextureRect" parent="disaster_techs/lightning_tech/thunderFlash"]
-visible = false
 modulate = Color(1, 1, 1, 0)
 anchors_preset = 15
 anchor_right = 1.0
@@ -165,7 +157,6 @@ grow_vertical = 2
 texture = SubResource("GradientTexture2D_x5b4r")
 
 [node name="storm_rain" type="GPUParticles2D" parent="disaster_techs/lightning_tech"]
-visible = false
 position = Vector2(576, -20)
 scale = Vector2(6, 7)
 amount = 500
@@ -178,10 +169,8 @@ process_material = SubResource("ParticleProcessMaterial_nl4v7")
 [node name="lightning_timer" type="Timer" parent="disaster_techs/lightning_tech"]
 
 [node name="meteor_tech" type="Node2D" parent="disaster_techs"]
-visible = false
 
 [node name="meteor_storm" type="GPUParticles2D" parent="disaster_techs/meteor_tech"]
-visible = false
 position = Vector2(947, -219)
 rotation = 3.73792
 scale = Vector2(6.69085, -13.5803)
@@ -194,11 +183,9 @@ randomness = 1.0
 process_material = SubResource("ParticleProcessMaterial_kqjln")
 
 [node name="blizzard_tech" type="Node2D" parent="disaster_techs"]
-visible = false
 position = Vector2(0, -1)
 
 [node name="blizzard_storm" type="GPUParticles2D" parent="disaster_techs/blizzard_tech"]
-visible = false
 position = Vector2(577, -13)
 amount = 500
 texture = ExtResource("2_q3n15")
@@ -212,8 +199,18 @@ process_material = SubResource("ParticleProcessMaterial_lsx2i")
 [node name="fire" type="GPUParticles2D" parent="disaster_techs/fire_tech"]
 process_material = SubResource("ParticleProcessMaterial_yodv6")
 
+[node name="fog_tech" type="Node2D" parent="disaster_techs"]
+
+[node name="fog" type="Panel" parent="disaster_techs/fog_tech"]
+custom_minimum_size = Vector2(1152, 648)
+offset_top = -1.0
+offset_right = 1152.0
+offset_bottom = 647.0
+theme_override_styles/panel = SubResource("StyleBoxTexture_7l6pm")
+
+[node name="fog_timer" type="Timer" parent="disaster_techs/fog_tech/fog"]
+
 [node name="blizzard_tint" type="CanvasModulate" parent="."]
-visible = false
 color = Color(0.254902, 0.215686, 0.243137, 1)
 
 [connection signal="timeout" from="weather_timer" to="." method="_on_weather_timer_timeout"]
