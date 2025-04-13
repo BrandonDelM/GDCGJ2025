@@ -127,6 +127,7 @@ one_shot = true
 autostart = true
 
 [node name="disaster_techs" type="CanvasLayer" parent="."]
+visible = false
 
 [node name="acid_rain_tech" type="Node2D" parent="disaster_techs"]
 
