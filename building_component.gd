@@ -41,6 +41,10 @@ func generate_people():
 
 func _on_building_buy_button_pressed() -> void:
 	if Global.money_value >= building_cost:
+		if (BUILDING_NAME == "house"):
+			Global.select_mode = true
+			Global.source_id = 0
+			Global.selected_tile = Vector2i(15,12)
 		Global.money_value -= building_cost
 		building_amount += 1
 		building_cost *= 1.25

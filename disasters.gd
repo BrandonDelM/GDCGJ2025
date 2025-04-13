@@ -126,16 +126,20 @@ func _on_destroy_timer_timeout() -> void:
 				print("Test")
 	elif (disaster_state == "fog"):
 		destroy_message("A human has died...");
+		Global.people_value = Global.people_value - 1
 	elif (disaster_state == "heatwave"):
 		destroy_message("A human has died...");
+		Global.people_value = Global.people_value - 1
 	elif (disaster_state == "acid"):
 		destroy_message("A human has died...");
+		Global.people_value = Global.people_value - 1
 		if (Global.buildings.size() != 0):
 			var destroy = randi_range(0, Global.buildings.size()-1)
 			Global.buildings.remove_at(destroy)
 			destroy_message("A building has been destroyed!");
 	elif (disaster_state == "blizard"):
 		destroy_message("A human has died...");
+		Global.people_value = Global.people_value - 1
 		print("Destroy a building")
 	elif (disaster_state == "earthquake"):
 		print("Destroy a building")
