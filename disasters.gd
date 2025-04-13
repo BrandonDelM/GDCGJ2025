@@ -2,7 +2,6 @@ extends StaticBody2D
 
 var disaster_state = "none"
 const disasters = ["acid", "storm", "meteor", "earthquake"]
-var disaster_time
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -22,15 +21,14 @@ func _process(delta):
 	elif disaster_state == "meteor":
 		$disaster_techs/meteor_tech/meteor_storm.visible = true
 		$meteor_tint.visible = true
-	elif disaster_state == "earthquale":
+	elif disaster_state == "earthquake":
 		Global.shake = "true"
 
 
 func _on_weather_timer_timeout():
 	if disaster_state == "none":
 		disaster_state = disasters[randi() % disasters.size()]
-		disaster_time = randi_range(60,120)
-		$weather_timer.wait_time = disaster_time
+		$weather_timer.wait_time = randi_range(60,120)
 		$weather_timer.start()
 		if disaster_state == "storm":
 			print("thunder")
