@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://dfwftdkk3lipp"]
+[gd_scene load_steps=22 format=3 uid="uid://dfwftdkk3lipp"]
 
 [ext_resource type="Script" uid="uid://c6th6uwfrkopq" path="res://disasters.gd" id="1_bm8e2"]
 [ext_resource type="Texture2D" uid="uid://b0qxjkeo5kgse" path="res://assets/rain.png" id="2_q3n15"]
@@ -8,7 +8,6 @@
 [ext_resource type="Texture2D" uid="uid://c5nolx1jsfd83" path="res://assets/Clouds.jpg" id="4_eis38"]
 [ext_resource type="AudioStream" uid="uid://decbynea7fh0q" path="res://assets/audio/can anybody hear me.wav" id="4_quvns"]
 [ext_resource type="AudioStream" uid="uid://b7w5vdu42e0qa" path="res://assets/audio/Supercritical Chroma.wav" id="5_5c0yx"]
-[ext_resource type="AudioStream" uid="uid://4hkewf45pikc" path="res://assets/audio/Tropic of Cancer.wav" id="6_ek0le"]
 [ext_resource type="AudioStream" uid="uid://d1ank8ifvjym5" path="res://assets/audio/exo 2.wav" id="7_g6fqo"]
 [ext_resource type="AudioStream" uid="uid://dqni1dv7sh2xr" path="res://assets/audio/goblin mode.wav" id="11_quvns"]
 
@@ -105,17 +104,6 @@ modulate_color = Color(0.364706, 0.364706, 0.364706, 1)
 visible = false
 script = ExtResource("1_bm8e2")
 
-[node name="notify_tech" type="CanvasLayer" parent="."]
-
-[node name="noti_ui" type="VBoxContainer" parent="notify_tech"]
-anchors_preset = 4
-anchor_top = 0.5
-anchor_bottom = 0.5
-offset_top = -92.0
-offset_right = 252.0
-offset_bottom = 324.0
-grow_vertical = 2
-
 [node name="storm_tint" type="CanvasModulate" parent="."]
 color = Color(0.490196, 0.552941, 1, 1)
 
@@ -141,10 +129,12 @@ stream = ExtResource("4_quvns")
 stream = ExtResource("5_5c0yx")
 
 [node name="acid_audio" type="AudioStreamPlayer2D" parent="."]
-stream = ExtResource("6_ek0le")
 
 [node name="earthquake_audio" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("7_g6fqo")
+
+[node name="title_music" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("11_quvns")
 
 [node name="destroy_timer" type="Timer" parent="."]
 one_shot = true
@@ -241,8 +231,16 @@ theme_override_styles/panel = SubResource("StyleBoxTexture_7l6pm")
 [node name="blizzard_tint" type="CanvasModulate" parent="."]
 color = Color(0.254902, 0.215686, 0.243137, 1)
 
-[node name="title_music" type="AudioStreamPlayer2D" parent="."]
-stream = ExtResource("11_quvns")
+[node name="notify_tech" type="CanvasLayer" parent="."]
+
+[node name="noti_ui" type="VBoxContainer" parent="notify_tech"]
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_top = -92.0
+offset_right = 252.0
+offset_bottom = 324.0
+grow_vertical = 2
 
 [connection signal="timeout" from="destroy_timer" to="." method="_on_destroy_timer_timeout"]
 [connection signal="timeout" from="weather_timer" to="." method="_on_weather_timer_timeout"]

@@ -47,7 +47,6 @@ func _on_weather_timer_timeout():
 		$weather_timer.start()
 		$destroy_timer.wait_time = randi_range(0, time)
 		$destroy_timer.start()
-		disaster_state = "heatwave"
 		if disaster_state == "storm":
 			$blizzard_audio.play()
 			print("thunder")
