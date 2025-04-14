@@ -2,8 +2,9 @@ extends Node2D
 
 var used_tiles = []
 
-func get_tiles(layer : TileMap, selected_tile : Vector2i, tile_pos : Vector2i):
-	var source_id = layer.get_cell_source_id(0, tile_pos)
+#Gets every tile an object that the layer is covering and more
+func get_tiles(layer : TileMapLayer, selected_tile : Vector2i, tile_pos : Vector2i):
+	var source_id = layer.get_cell_source_id(tile_pos)
 	var atlas_tile : TileSetAtlasSource
 	var tile_size
 	

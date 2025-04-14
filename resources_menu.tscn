@@ -1,6 +1,6 @@
-[gd_scene load_steps=3 format=3 uid="uid://djk4m4gjgrk6x"]
+[gd_scene load_steps=3 format=3 uid="uid://blb37v1381dkh"]
 
-[ext_resource type="Script" uid="uid://d1fsuut7okvwq" path="res://test_income_generator.gd" id="1_5c3ox"]
+[ext_resource type="Script" path="res://test_income_generator.gd" id="1_5c3ox"]
 [ext_resource type="PackedScene" uid="uid://cwco5udo87hi2" path="res://building_component.tscn" id="2_meicg"]
 
 [node name="resources_menu" type="Control"]

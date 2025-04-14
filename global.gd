@@ -14,5 +14,11 @@ var money_value : float = 100.0
 var people_value : int = 0
 			
 var select_mode : bool = false
-var source_id : int
+var source_id : int = 0
 var selected_tile : Vector2i
+
+var used_tiles = []
+
+var Dic = {}
+
+var placeable = false
