@@ -41,6 +41,7 @@ func _on_weather_timer_timeout():
 	$title_music.stop()
 	if disaster_state == "none":
 		disaster_state = disasters[randi() % disasters.size()]
+		disaster_state = "meteor"
 		show_side(disaster_state)
 		var time : int = randi_range(60,90)
 		$weather_timer.wait_time = time
@@ -133,11 +134,7 @@ func _on_destroy_timer_timeout() -> void:
 	$destroy_timer.wait_time = randi_range(5, 20)
 	$destroy_timer.start()
 	if (disaster_state == "meteor"):
-		var x = randi_range(0, 19)
-		var y = randi_range(0, 19)
-		for i in range(x, x+1):
-			for j in range(y, y+1):
-				print("Test")
+		meteor_hit()
 	elif (disaster_state == "fog"):
 		destroy_message("A human has died...");
 		Global.people_value = Global.people_value - 1
@@ -163,3 +160,13 @@ func _on_destroy_timer_timeout() -> void:
 			var tile : Vector2i = Global.buildings[destroy-1]
 			Global.buildings.remove_at(destroy)
 			destroy_message("A building has been destroyed!");
+
+func meteor_hit():
+	var x = randi_range(26, 46)
+	var y = randi_range(10, 30)
+	print("x:", x, "y:", y)
+	if Vector2i(x,y) in BuildManager.used_tiles:
+		print("boom!")
+		Global.tile_info = Vector2i(x,y)
+		Global.erase = Vector2i(x,y)
+		Global.erase_status = true

@@ -46,6 +46,12 @@ func _physics_process(delta):
 	if Global.select_mode:
 		preview_tile = get_snapped_position(get_global_mouse_position())
 
+func _process(delta):
+	if (Global.erase_status == true):
+		ground.erase_cell(Global.erase)
+		ground.set_cell(Global.erase, 0, Vector2i(3, 11))
+		Global.erase_status = false
+
 # checks mouse input
 func _input(event):
 	if event is InputEventMouseButton and event.pressed:
