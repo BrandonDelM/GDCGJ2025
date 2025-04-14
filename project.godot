@@ -11,12 +11,12 @@ config_version=5
 [application]
 
 config/name="Game Development Club Game Jam 2025"
-run/main_scene="res://mainmenu.tscn"
+run/main_scene="uid://b317kpxwh1vw7"
 config/features=PackedStringArray("4.4", "Forward Plus")
 
 [autoload]
 
-Global="*res://Global.gd"
+Global="*res://global.gd"
 BuildManager="*res://build_manager.gd"
 
 [display]

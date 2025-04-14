@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://dp7vev7kl7ge2"
+path="res://.godot/imported/The Gardner-Pierce Project.wav-278a86b52726b7c7374145aec9b19b97.sample"
+
+[deps]
+
+source_file="res://assets/audio/The Gardner-Pierce Project.wav"
+dest_files=["res://.godot/imported/The Gardner-Pierce Project.wav-278a86b52726b7c7374145aec9b19b97.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

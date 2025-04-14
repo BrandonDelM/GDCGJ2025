@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://4hkewf45pikc"
+path="res://.godot/imported/Tropic of Cancer.wav-56fa47c2de0091864c6e1ce020e5c661.sample"
+
+[deps]
+
+source_file="res://assets/audio/Tropic of Cancer.wav"
+dest_files=["res://.godot/imported/Tropic of Cancer.wav-56fa47c2de0091864c6e1ce020e5c661.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

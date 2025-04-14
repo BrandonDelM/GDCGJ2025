@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://b38wxcjn6jt3m"]
+[gd_scene load_steps=12 format=3 uid="uid://b38wxcjn6jt3m"]
 
 [ext_resource type="Texture2D" uid="uid://cx0e1qw7gfdrb" path="res://assets/imprtileset.png" id="1_la7id"]
 [ext_resource type="Texture2D" uid="uid://dphkru3wxfehc" path="res://assets/Vegetables.png" id="2_1oe3f"]
@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://djsx1cnidoqmp" path="res://notifications.tscn" id="5_bdpf8"]
 [ext_resource type="PackedScene" uid="uid://cbxt7ghllfmo3" path="res://test_scene.tscn" id="6_0n56p"]
 [ext_resource type="PackedScene" uid="uid://cgp84bwisiu8x" path="res://build_manager.tscn" id="7_7vgwn"]
+[ext_resource type="PackedScene" uid="uid://djk4m4gjgrk6x" path="res://resources_menu.tscn" id="8_8jmft"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_0e48y"]
 texture = ExtResource("1_la7id")
@@ -123,9 +124,14 @@ zoom = Vector2(1.5, 1.5)
 script = ExtResource("3_t8ddp")
 
 [node name="disasters" parent="." instance=ExtResource("4_7yrct")]
-
-[node name="notifications" parent="." instance=ExtResource("5_bdpf8")]
+visible = true
 
 [node name="TestScene" parent="." instance=ExtResource("6_0n56p")]
 
 [node name="BuildManager" parent="." instance=ExtResource("7_7vgwn")]
+
+[node name="notifications" parent="." instance=ExtResource("5_bdpf8")]
+
+[node name="resource_tech" type="CanvasLayer" parent="."]
+
+[node name="resources_menu" parent="resource_tech" instance=ExtResource("8_8jmft")]
